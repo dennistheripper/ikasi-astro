@@ -107,8 +107,10 @@ body::before {
   inset: 0;
   z-index: -1;
   background-image: url('/images/marble-bg.png');
-  background-size: 150% 150%;
+  background-size: 300% auto;
   background-position: center;
+  opacity: 0.8;
+  /* Ensure texture stands out slightly more if needed, though usually marble is subtle */
   animation: marble-drift 120s ease-in-out infinite;
   pointer-events: none;
 }
