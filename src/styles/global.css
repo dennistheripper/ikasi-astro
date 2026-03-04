@@ -117,9 +117,11 @@ body::before {
 
 @media (max-width: 767px) {
   body::before {
-    background-size: 150% auto;
-    opacity: 0.7;
-    filter: contrast(1.02) brightness(1.01);
+    background-image: url("/images/marble-bg.png");
+    background-size: cover;
+    opacity: 0.8;
+    filter: contrast(1.05) brightness(1);
+    animation: marble-drift 120s linear infinite;
   }
 }
 
