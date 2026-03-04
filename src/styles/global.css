@@ -102,13 +102,7 @@ body {
   }
 }
 
-@media (max-width: 767px) {
-  body {
-    background-size: cover;
-    background-position: 30% 30%;
-    animation: none;
-  }
-}
+
 
 @media (prefers-reduced-motion: reduce) {
   body {
