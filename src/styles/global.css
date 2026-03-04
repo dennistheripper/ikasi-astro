@@ -70,7 +70,7 @@ html {
 }
 
 body {
-  background-color: hsl(var(--background));
+  background-color: #fff;
   color: hsl(var(--foreground));
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -87,6 +87,15 @@ body {
   .footer-brand {
     grid-column: span 1 !important;
   }
+}
+
+/* Ensure no gap below footer */
+.min-h-screen {
+  background-color: transparent;
+}
+
+.min-h-screen>footer:last-child {
+  margin-bottom: 0;
 }
 
 /* Fix for mobile/iOS Safari: background-attachment: fixed is broken on mobile. 
