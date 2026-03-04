@@ -77,6 +77,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Footer responsive: 3 columns on desktop, 2 on mobile */
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .footer-brand {
+    grid-column: span 1 !important;
+  }
+}
+
 /* Fix for mobile/iOS Safari: background-attachment: fixed is broken on mobile. 
    Using a fixed pseudo-element instead ensures it works perfectly everywhere. */
 body::before {
