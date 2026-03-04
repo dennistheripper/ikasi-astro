@@ -118,10 +118,10 @@ body::before {
 @media (max-width: 767px) {
   body::before {
     background-image: url("/images/marble-bg.png");
-    background-size: cover;
-    opacity: 0.8;
-    filter: contrast(1.05) brightness(1);
-    animation: marble-drift 120s linear infinite;
+    background-size: 300% auto;
+    opacity: 0.9;
+    filter: contrast(1.1) brightness(1);
+    animation: marble-drift 80s linear infinite;
   }
 }
 
@@ -381,7 +381,7 @@ button {
     box-shadow: var(--shadow-card);
 
     @media (min-width: 768px) {
-      padding: 2rem;
+      padding: 1.5rem 2rem 2rem 2rem;
     }
   }
 
@@ -392,7 +392,7 @@ button {
     box-shadow: var(--shadow-elevated);
 
     @media (min-width: 768px) {
-      padding: 2rem;
+      padding: 1.5rem 2rem 2rem 2rem;
     }
   }
 
