@@ -205,7 +205,7 @@ const checkoutUrl = "https://www.checkout-ds24.com/product/632732";
       overflow-x: hidden;
     }
     body {
-      overflow-x: hidden;
+      /* body-specific styles if needed */
     }
     @media(min-width:768px){
       .footer-grid{grid-template-columns:repeat(3,1fr)!important;align-items:start!important}
@@ -274,18 +274,20 @@ const checkoutUrl = "https://www.checkout-ds24.com/product/632732";
   window.addEventListener('scroll', () => {
     // Only apply on mobile/small screens
     if (window.innerWidth < 768) {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+      let currentScrollY = window.scrollY;
+      
+      // If we scroll down more than 10px beyond the header height
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
         // Scrolling down - hide
-        header.style.transform = 'translateY(-100%)';
-      } else {
+        header.style.transform = 'translateY(-110%)';
+      } else if (currentScrollY < lastScrollY) {
         // Scrolling up - show
         header.style.transform = 'translateY(0)';
       }
+      lastScrollY = currentScrollY;
     } else {
-      // Ensure it's visible on desktop if resized
       header.style.transform = 'translateY(0)';
     }
-    lastScrollY = window.scrollY;
   }, { passive: true });
 
   // Accordion toggle
