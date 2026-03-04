@@ -117,9 +117,9 @@ body::before {
 
 @media (max-width: 767px) {
   body::before {
-    background-size: cover;
-    opacity: 0.9;
-    filter: contrast(1.05) brightness(1);
+    background-size: 150% auto;
+    opacity: 0.7;
+    filter: contrast(1.02) brightness(1.01);
   }
 }
 
