@@ -81,6 +81,7 @@ body {
 @media (min-width: 768px) {
   .footer-grid {
     grid-template-columns: repeat(3, 1fr) !important;
+    align-items: start !important;
   }
 
   .footer-brand {
