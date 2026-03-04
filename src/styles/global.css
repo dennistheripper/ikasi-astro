@@ -109,19 +109,19 @@ body::before {
   background-image: url('/images/marble-bg.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.8;
-  filter: contrast(1.1) brightness(1.02);
-  animation: marble-drift 100s linear infinite;
+  opacity: 0.5;
+  filter: contrast(1.02) brightness(1.02);
+  animation: marble-drift 120s linear infinite;
   pointer-events: none;
 }
 
 @media (max-width: 767px) {
   body::before {
     background-image: url("/images/marble-bg.png");
-    background-size: 300% auto;
-    opacity: 0.9;
-    filter: contrast(1.1) brightness(1);
-    animation: marble-drift 80s linear infinite;
+    background-size: cover;
+    opacity: 0.45;
+    filter: contrast(1.02) brightness(1.02);
+    animation: marble-drift 150s linear infinite;
   }
 }
 
