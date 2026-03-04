@@ -1,0 +1,382 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'CameraPlainVariable';
+  src: url('/fonts/CameraPlainVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: 38 45% 94%;
+  --foreground: 0 0% 10%;
+  --card: 40 50% 97%;
+  --card-foreground: 0 0% 10%;
+  --popover: 40 50% 97%;
+  --popover-foreground: 0 0% 10%;
+  --primary: 41 64% 44%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 38 40% 90%;
+  --secondary-foreground: 0 0% 20%;
+  --muted: 38 30% 88%;
+  --muted-foreground: 0 0% 35%;
+  --accent: 41 64% 44%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 38 30% 85%;
+  --input: 38 30% 85%;
+  --ring: 41 64% 44%;
+  --radius: 1rem;
+  --cream-light: 40 52% 96%;
+  --cream-medium: 38 45% 92%;
+  --cream-dark: 36 40% 88%;
+  --gold: 41 64% 44%;
+  --gold-light: 41 60% 55%;
+  --gold-dark: 41 70% 35%;
+  --text-primary: 0 0% 10%;
+  --text-secondary: 0 0% 29%;
+  --shadow-soft: 0 4px 20px -2px hsl(38 30% 70% / 0.3);
+  --shadow-card: 0 8px 30px -4px hsl(38 30% 60% / 0.25);
+  --shadow-elevated: 0 12px 40px -8px hsl(38 30% 50% / 0.3);
+}
+
+.dark {
+  --background: 30 20% 10%;
+  --foreground: 38 30% 90%;
+  --card: 30 20% 14%;
+  --card-foreground: 38 30% 90%;
+  --popover: 30 20% 14%;
+  --popover-foreground: 38 30% 90%;
+  --primary: 41 64% 50%;
+  --primary-foreground: 0 0% 10%;
+  --secondary: 30 20% 20%;
+  --secondary-foreground: 38 30% 90%;
+  --muted: 30 15% 25%;
+  --muted-foreground: 38 20% 60%;
+  --accent: 41 64% 50%;
+  --accent-foreground: 0 0% 10%;
+  --destructive: 0 62% 40%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 30 15% 25%;
+  --input: 30 15% 25%;
+  --ring: 41 64% 50%;
+}
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url('/images/marble-bg.png');
+  background-size: 150% 150%;
+  background-position: center;
+  background-attachment: fixed;
+  animation: marble-drift 120s ease-in-out infinite;
+}
+
+@keyframes marble-drift {
+
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+
+  25% {
+    background-position: 100% 50%;
+  }
+
+  50% {
+    background-position: 50% 100%;
+  }
+
+  75% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    background-size: cover;
+    background-position: 30% 30%;
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+}
+
+/* ── Typography helpers ── */
+.font-display {
+  font-family: 'CameraPlainVariable', 'Georgia', serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+/* ── Semantic color shorthands (used in inline styles) ── */
+/* These are exposed as CSS vars for convenience */
+:root {
+  --c-bg: hsl(var(--background));
+  --c-card: hsl(var(--card));
+  --c-border: hsl(var(--border));
+  --c-text: hsl(var(--foreground));
+  --c-muted: hsl(var(--muted-foreground));
+  --c-gold: hsl(var(--gold));
+  --c-gold-light: hsl(var(--gold-light));
+  --c-gold-dark: hsl(var(--gold-dark));
+  --c-primary-fg: hsl(var(--primary-foreground));
+}
+
+/* ── FAQ Accordion ── */
+details summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] .chevron {
+  transform: rotate(180deg);
+}
+
+.chevron {
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+/* ── Smooth hover transitions ── */
+a,
+button {
+  transition: opacity .2s, transform .15s;
+}
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* ── Tailwind v4: Theme color mappings ── */
+/* Maps :root CSS variables to Tailwind color utilities           */
+/* generates bg-primary, text-primary, border-primary, etc.      */
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-gold: hsl(var(--gold));
+  --color-gold-light: hsl(var(--gold-light));
+  --color-gold-dark: hsl(var(--gold-dark));
+  --color-cream-light: hsl(var(--cream-light));
+  --color-cream-medium: hsl(var(--cream-medium));
+  --color-cream-dark: hsl(var(--cream-dark));
+}
+
+/* ── Custom shadow utilities ── */
+@layer utilities {
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  @media (hover: hover) {
+    .hover\:shadow-soft:hover {
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hover\:shadow-elevated:hover {
+      box-shadow: var(--shadow-elevated);
+    }
+  }
+}
+
+/* ── Animations ── */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-text {
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  transition: none;
+}
+
+.btn-shine:hover::after {
+  animation: shine 0.7s ease-in-out;
+}
+
+@keyframes shine {
+  100% {
+    left: 200%;
+  }
+}
+
+/* ── IKASI component classes ── */
+@layer components {
+
+  .ikasi-section {
+    padding: 3rem 1rem;
+
+    @media (min-width: 768px) {
+      padding: 5rem 2rem;
+    }
+  }
+
+  .ikasi-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 72rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .ikasi-card {
+    border-radius: 1.25rem;
+    background-color: hsl(var(--card));
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+
+    @media (min-width: 768px) {
+      padding: 2rem;
+    }
+  }
+
+  .ikasi-card-elevated {
+    border-radius: 1.25rem;
+    background-color: hsl(var(--card));
+    padding: 1.5rem;
+    box-shadow: var(--shadow-elevated);
+
+    @media (min-width: 768px) {
+      padding: 2rem;
+    }
+  }
+
+  .ikasi-bg-cream-medium {
+    background-color: transparent;
+  }
+
+  .cta-glow {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)), hsl(var(--gold)));
+      border-radius: inherit;
+      opacity: 0.6;
+      filter: blur(12px);
+      z-index: -1;
+      animation: pulse-glow 2.5s ease-in-out infinite;
+    }
+  }
+
+}
