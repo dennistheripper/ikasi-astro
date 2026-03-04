@@ -75,11 +75,20 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for mobile/iOS Safari: background-attachment: fixed is broken on mobile. 
+   Using a fixed pseudo-element instead ensures it works perfectly everywhere. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background-image: url('/images/marble-bg.png');
   background-size: 150% 150%;
   background-position: center;
-  background-attachment: fixed;
   animation: marble-drift 120s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes marble-drift {
