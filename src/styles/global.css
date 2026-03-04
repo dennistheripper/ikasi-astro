@@ -107,12 +107,24 @@ body::before {
   inset: 0;
   z-index: -1;
   background-image: url('/images/marble-bg.png');
-  background-size: 300% auto;
+  background-size: 200% auto;
+  /* Smaller than 300% to keep more detail density */
   background-position: center;
-  opacity: 0.8;
-  /* Ensure texture stands out slightly more if needed, though usually marble is subtle */
-  animation: marble-drift 120s ease-in-out infinite;
+  opacity: 1;
+  /* Full opacity */
+  filter: contrast(1.2) brightness(1.05);
+  /* Boost the marble veins */
+  animation: marble-drift 60s linear infinite;
   pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  body::before {
+    background-size: 400% auto;
+    /* Zoom in even more on mobile to show the texture large */
+    filter: contrast(150%) brightness(100%);
+    /* Stronger contrast for mobile screens */
+  }
 }
 
 @keyframes marble-drift {
