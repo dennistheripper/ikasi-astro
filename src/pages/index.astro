@@ -273,6 +273,27 @@ const checkoutUrl = "https://www.checkout-ds24.com/product/632732";
 
 <!-- Vanilla JS for interaction -->
 <script is:inline>
+  // Mobile Header scroll behavior
+  let lastScrollY = window.scrollY;
+  const header = document.querySelector('header');
+  
+  window.addEventListener('scroll', () => {
+    // Only apply on mobile/small screens
+    if (window.innerWidth < 768) {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        // Scrolling down - hide
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        // Scrolling up - show
+        header.style.transform = 'translateY(0)';
+      }
+    } else {
+      // Ensure it's visible on desktop if resized
+      header.style.transform = 'translateY(0)';
+    }
+    lastScrollY = window.scrollY;
+  }, { passive: true });
+
   // Accordion toggle
   document.querySelectorAll('button[aria-controls]').forEach(btn => {
     btn.addEventListener('click', () => {
