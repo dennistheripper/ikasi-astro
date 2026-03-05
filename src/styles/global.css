@@ -109,8 +109,8 @@ body::before {
   background-image: url('/images/marble-bg.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.5;
-  filter: contrast(1.02) brightness(1.02);
+  opacity: 0.85;
+  filter: contrast(1.15) brightness(0.98);
   animation: marble-drift 120s linear infinite;
   pointer-events: none;
 }
@@ -119,8 +119,8 @@ body::before {
   body::before {
     background-image: url("/images/marble-bg.png");
     background-size: cover;
-    opacity: 0.45;
-    filter: contrast(1.02) brightness(1.02);
+    opacity: 0.8;
+    filter: contrast(1.15) brightness(0.98);
     animation: marble-drift 150s linear infinite;
   }
 }
