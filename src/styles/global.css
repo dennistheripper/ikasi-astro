@@ -71,7 +71,7 @@ html {
 }
 
 body {
-  background-color: #fff;
+  background-color: transparent;
   color: hsl(var(--foreground));
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
