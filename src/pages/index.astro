@@ -427,29 +427,31 @@ const checkoutUrl = "https://www.checkout-ds24.com/product/632732";
     if (chart) obs.observe(chart);
   });
 
-  // Show More Testimonials
-  const showMoreBtn = document.getElementById('btn-show-more-testi');
-  if (showMoreBtn) {
-    showMoreBtn.addEventListener('click', () => {
-      const hidden = document.querySelectorAll('.testi-hidden');
-      hidden.forEach((el, i) => {
-        el.style.display = '';
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-          el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        }, i * 100);
+  // DOMContentLoaded for Testimonials and Video
+  document.addEventListener('DOMContentLoaded', () => {
+    // Show More Testimonials
+    const showMoreBtn = document.getElementById('btn-show-more-testi');
+    if (showMoreBtn) {
+      showMoreBtn.addEventListener('click', () => {
+        const hidden = document.querySelectorAll('.testi-hidden');
+        hidden.forEach((el, i) => {
+          el.style.display = '';
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }, i * 100);
+        });
+        const wrap = document.getElementById('testi-show-more-wrap');
+        if (wrap) {
+          wrap.style.transition = 'opacity 0.3s ease';
+          wrap.style.opacity = '0';
+          setTimeout(() => wrap.style.display = 'none', 300);
+        }
       });
-      const wrap = document.getElementById('testi-show-more-wrap');
-      if (wrap) {
-        wrap.style.transition = 'opacity 0.3s ease';
-        wrap.style.opacity = '0';
-        setTimeout(() => wrap.style.display = 'none', 300);
-      }
-    });
-  }
+    }
 
     // Fullscreen Video logic
     const fsBtn = document.getElementById('btn-fullscreen-video');
@@ -467,6 +469,7 @@ const checkoutUrl = "https://www.checkout-ds24.com/product/632732";
       });
     }
   });
+
 </script>
 
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
